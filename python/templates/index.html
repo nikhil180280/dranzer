@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRANZER’S Planner: A Magical Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- WIZARDING WORLD CSS THEME --- */
+        :root {
+            --hogwarts-red: #740001; /* Gryffindor Deep Red */
+            --hogwarts-gold: #D3A625; /* Snitch Gold */
+            --parchment-bg: #fdf5e6; /* Light Parchment */
+            --parchment-dark: #e8dcc5; /* Darker Parchment */
+            --ink-black: #1a1a1a;
+            --magic-glow: #eeba30;
+            --forest-green: #1a472a; /* Slytherin Green for Money */
+            --shadow-scroll: 0 10px 25px rgba(0, 0, 0, 0.2);
+            --radius-scroll: 4px;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2e2e2e; /* Dark background behind the parchment */
+            background-image: radial-gradient(circle at 50% 50%, #2e2e2e 0%, #1a1a1a 100%);
+            color: var(--ink-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- MAGIC BACKGROUND TEXTURE --- */
+        .parchment-texture {
+            background-color: var(--parchment-bg);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d3a625' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            margin: 0;
+            font-size: 3.5em;
+            color: var(--hogwarts-gold);
+            /* Enhanced Animation */
+            text-shadow: 0 0 15px var(--hogwarts-gold), 2px 2px 0px #000;
+            animation: float 3s ease-in-out infinite, pulse-border 4s infinite;
+            border: 4px solid var(--hogwarts-gold);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        @keyframes pulse-border {
+            0% { border-color: var(--hogwarts-gold); box-shadow: 0 0 5px var(--hogwarts-gold); }
+            50% { border-color: var(--hogwarts-red); box-shadow: 0 0 25px var(--hogwarts-red); }
+            100% { border-color: var(--hogwarts-gold); box-shadow: 0 0 5px var(--hogwarts-gold); }
+        }
+
+        header p {
+            color: #ddd;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); text-shadow: 0 0 15px rgba(211, 166, 37, 0.5); }
+            50% { transform: translateY(-10px); text-shadow: 0 0 25px rgba(211, 166, 37, 0.8); }
+            100% { transform: translateY(0px); text-shadow: 0 0 15px rgba(211, 166, 37, 0.5); }
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .section-card {
+            background-color: var(--parchment-bg);
+            border: 2px solid var(--parchment-dark);
+            padding: 50px;
+            border-radius: var(--radius-scroll);
+            box-shadow: var(--shadow-scroll);
+            margin-bottom: 60px;
+            position: relative;
+            /* Magical Border Effect */
+            background-image: linear-gradient(var(--parchment-bg), var(--parchment-bg)), 
+                              radial-gradient(circle at top left, var(--hogwarts-gold), transparent 20%),
+                              radial-gradient(circle at bottom right, var(--hogwarts-red), transparent 20%);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card::before, .section-card::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0;
+            height: 20px;
+            background: linear-gradient(to right, #8B4513, #D2691E, #8B4513);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .section-card::before { top: -10px; } /* Scroll Top Handle */
+        .section-card::after { bottom: -10px; } /* Scroll Bottom Handle */
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--hogwarts-red);
+            border-bottom: 2px solid var(--hogwarts-gold);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+            text-align: center;
+        }
+
+        h2::before { content: "✨ "; }
+        h2::after { content: " ✨"; }
+
+        /* Form Styling - Ink & Quill feel */
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--hogwarts-red);
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 5px;
+            border: none;
+            border-bottom: 2px solid var(--hogwarts-red);
+            background: transparent;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2em;
+            color: var(--ink-black);
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-bottom-color: var(--hogwarts-gold);
+            background-color: rgba(211, 166, 37, 0.1);
+        }
+
+        /* Magical Button */
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, var(--hogwarts-red), #500000);
+            color: var(--hogwarts-gold);
+            border: 2px solid var(--hogwarts-gold);
+            border-radius: 50px; /* Pill shape */
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.4em;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px #000;
+            box-shadow: 0 4px 15px rgba(116, 0, 1, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px var(--hogwarts-gold);
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        
+        .cta-button:active::after {
+            opacity: 1;
+            transform: scale(1);
+            transition: 0s;
+        }
+        
+        /* WAVE EFFECT FOR LOGIN BUTTON */
+        .login-button-wave::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: wave 1.5s ease-out infinite;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        @keyframes wave {
+            0% { transform: translate(-50%, -50%) scale(0.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(15); opacity: 0; }
+        }
+
+        /* --- Results: Unrolling Scroll Animation --- */
+        #results-container {
+            display: none;
+            transform-origin: top center;
+            animation: unrollScroll 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        
+        @keyframes unrollScroll {
+            from { 
+                opacity: 0; 
+                transform: scaleY(0); 
+                max-height: 0;
+            }
+            to { 
+                opacity: 1; 
+                transform: scaleY(1); 
+                max-height: 3000px;
+            }
+        }
+
+        .summary-flex {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .budget-pie-chart, .budget-breakdown {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            background: rgba(255,255,255,0.4);
+            border: 1px dashed var(--hogwarts-red);
+            border-radius: 8px;
+        }
+
+        .chart-graphic {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Crystal Ball look */
+            overflow: hidden;
+            background: radial-gradient(circle at 30% 30%, #fff, #f4e4bc);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; border-bottom: 2px solid var(--hogwarts-red); color: var(--hogwarts-red); font-family: 'Cinzel Decorative'; }
+        td { padding: 10px 0; border-bottom: 1px solid #ccc; font-size: 1.1em; }
+
+        .itinerary-item {
+            border-left: 4px solid var(--hogwarts-red);
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .itinerary-item::before {
+            content: '⚡';
+            position: absolute;
+            left: -14px;
+            top: 20px;
+            background: var(--parchment-bg);
+            color: var(--hogwarts-gold);
+            font-size: 1.2em;
+        }
+
+        .daily-budget {
+            background-color: var(--forest-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #fff;
+            float: right;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Utility Cards */
+        .utility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .utility-item {
+            background-color: #fdf5e6;
+            border: 1px solid var(--hogwarts-gold);
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .utility-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(211, 166, 37, 0.3);
+        }
+        
+        .utility-item h4 {
+            font-family: 'Cinzel Decorative';
+            color: var(--hogwarts-red);
+            margin-top: 0;
+        }
+        
+        .utility-btn {
+            background: var(--hogwarts-gold);
+            color: #4a3b00;
+            font-size: 1em;
+            border: none;
+            padding: 10px;
+        }
+
+        /* Dynamic Results */
+        .dynamic-results {
+            border-top: 2px dashed var(--hogwarts-red);
+            margin-top: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
+        }
+        
+        .dynamic-results.active {
+            max-height: 1000px;
+            padding-top: 20px;
+        }
+
+        .result-card {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+        }
+
+        /* Packing List */
+        .packing-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+        
+        #packing-items-list li {
+            font-family: 'Crimson Text'; 
+            font-size: 1.2em; 
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        #packing-items-list li.packed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        #packing-items-list li.packed::before {
+            content: '✔ ';
+            color: var(--forest-green);
+        }
+
+        .remove-btn {
+            background: transparent;
+            border: 1px solid var(--hogwarts-red);
+            color: var(--hogwarts-red);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            float: right;
+        }
+
+        /* --- LOGIN PAGE STYLES --- */
+        #login-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .login-card {
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+        }
+
+        /* --- LOADING OVERLAY --- */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+        
+        .quidditch-spinner {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            border-top-color: var(--hogwarts-gold);
+            border-right-color: var(--hogwarts-red);
+            animation: spin 1s linear infinite;
+            position: relative;
+        }
+        
+        .quidditch-spinner::after {
+            content: '⚯'; /* Glasses or other magic symbol */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: var(--hogwarts-gold);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        #loading-overlay p {
+            color: #fff;
+            margin-top: 20px;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.5em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            .packing-wrapper { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="loading-overlay">
+        <div class="quidditch-spinner"></div>
+        <p>Brewing the Potion...</p>
+    </div>
+
+    <section id="login-section">
+        <div class="section-card login-card">
+            <h2 style="margin-bottom: 20px;">🔑 Ministry Access</h2>
+            <p>Only those with official clearance may proceed.</p>
+            <form id="login-form">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="magic-id">Magic ID (Username)</label>
+                    <input type="text" id="magic-id" placeholder="Official Name" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 40px;">
+                    <label for="magic-pass">Password (Incantation)</label>
+                    <input type="password" id="magic-pass" placeholder="Alohomora..." required>
+                </div>
+                <button type="submit" class="cta-button login-button-wave">
+                    Execute Alohomora (Login)
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <div id="planner-content" style="display: none;">
+        <header>
+            <h1>DRANZER’S Planner</h1>
+            <p>Manage your Mischief & Galleons wisely</p>
+        </header>
+
+        <main>
+            <div class="section-card">
+                <h2>🔮 1. Enchant Your Journey</h2>
+                <form id="trip-form">
+                    <div class="input-grid">
+                        <div class="form-group">
+                            <label for="user-name">🧙‍♂️ Wizard/Witch Name</label>
+                            <input type="text" id="user-name" placeholder="e.g. Harry Potter" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-age">⏳ Age (Years)</label>
+                            <input type="number" id="user-age" placeholder="Age" min="11" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location-to">📍 Destination (Portkey Location)</label>
+                            <input type="text" id="location-to" placeholder="e.g., Visakhapatnam, India" value="Visakhapatnam" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-start">📅 Arrival Date</label>
+                            <input type="date" id="date-start" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-end">📅 Departure Date</label>
+                            <input type="date" id="date-end" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">💰 Gringotts Vault Limit</label>
+                            <input type="number" id="budget" placeholder="Recommended: 50000" min="100" value="50000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currency-symbol">🪙 Currency Type</label>
+                            <select id="currency-symbol" required>
+                                <option value="₹" selected>Rupees (₹)</option>
+                                <option value="G">Galleons (G)</option>
+                                <option value="$">Muggle USD ($)</option>
+                                <option value="£">Muggle GBP (£)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="travel-style">🧹 Travel Style</label>
+                            <select id="travel-style" required>
+                                <option value="Relaxed">Leisurely (Butterbeer & Views)</option>
+                                <option value="Moderate" selected>Balanced (Standard Broomstick)</option>
+                                <option value="Fast-paced">Adventurous (Dragon Riding)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="cta-button">✨ Reveal My Prophecy (Generate Plan)</button>
+                </form>
+            </div>
+
+            <div id="results-container" class="section-card parchment-texture">
+                <h2>📜 The Prophecy (Itinerary)</h2>
+
+                <div class="summary-card">
+                    <h3 style="font-family: 'Cinzel Decorative'; color: var(--hogwarts-gold); text-shadow: 1px 1px 0 #000;">💰 Vault Strategy</h3>
+                    <p id="ai-brief-idea">Divining appropriate strategy...</p>
+
+                    <div class="summary-flex">
+                        <div class="budget-pie-chart">
+                            <h4>Galleons Breakdown</h4>
+                            <div class="chart-graphic">
+                                                        </div>
+                            <p style="text-align: center; margin-top: 10px; font-style: italic;">
+                                *A visual divination of your expenses.*
+                            </p>
+                            <p>Total Vault: <strong id="total-budget-display" style="color: var(--hogwarts-red);"></strong></p>
+                            <p>Est. Cost: <strong style="color: var(--forest-green);" id="est-total-cost-display"></strong></p>
+                        </div>
+
+                        <div class="budget-breakdown">
+                            <h4>Expense Scroll</h4>
+                            <table>
+                                <thead><tr><th>Category</th><th>Cost</th><th>%</th></tr></thead>
+                                <tbody id="budget-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--hogwarts-red); margin-top: 40px;">🗺️ The Daily Path</h3>
+                <div id="itinerary-list"></div>
+            </div>
+
+            <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(116, 0, 1, 0.75), rgba(0, 0, 0, 0)); margin: 50px 0;">
+
+            <div class="section-card">
+                <h2>🦉 2. Wizarding Services & Tools</h2>
+                <div class="utility-grid">
+                    
+                    <div class="utility-item">
+                        <h4>🚗 Portkeys & Chariots (Rentals)</h4>
+                        <p>Find **self-drive chariots** or **chauffeured carriages**.</p>
+                        <button class="cta-button utility-btn" data-target="rental-results">Summon Transport</button>
+                        <div id="rental-results" class="dynamic-results">
+                            <h5>Available in Visakhapatnam:</h5>
+                            <div class="result-card">
+                                <h6>Maruti Swift (Self-Drive)</h6>
+                                <p>₹1,800 / day. "The Nimbus 2000 of cars." Quick and agile.</p>
+                            </div>
+                            <div class="result-card">
+                                <h6>Toyota Innova (Chauffeur)</h6>
+                                <p>₹3,500 / 8 hrs. A family carriage fit for the Weasleys.</p>
+                            </div>
+                            <div class="result-card">
+                                <h6>Electric Scooter</h6>
+                                <p>₹500 / day. Stealthy like an invisibility cloak.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="utility-item">
+                        <h4>🏨 Lodgings (Inns & Hotels)</h4>
+                        <p>Rest your head at **magical inns** or **luxury castles**.</p>
+                        <button class="cta-button utility-btn" data-target="hotel-results">Consult The Sorting Hat</button>
+                        <div id="hotel-results" class="dynamic-results">
+                            <h5>Recommended Lodgings:</h5>
+                                                    <div class="result-card">
+                                <h6>Novotel Varun Beach</h6>
+                                <p>Luxury. 5 Star. Avg. ₹8,500/night. **Views of the Black Lake (Ocean).**</p>
+                            </div>
+                            <div class="result-card">
+                                <h6>Ginger Visakhapatnam</h6>
+                                <p>Budget. 3 Star. Avg. ₹2,800/night. Cozy as the Gryffindor Common Room.</p>
+                            </div>
+                            <div class="result-card">
+                                <h6>Hostel La-Vie</h6>
+                                <p>Backpacker. Avg. ₹800/night. Ideal for student wizards.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="utility-item">
+                        <h4>🙋 Local Guides</h4>
+                        <p>Hire a **local expert** to reveal hidden secrets.</p>
+                        <button class="cta-button utility-btn" data-target="guide-results">Find a Guide</button>
+                        <div id="guide-results" class="dynamic-results">
+                            <h5>Guided Adventures:</h5>
+                            <div class="result-card">
+                                <h6>Vizag History Walk</h6>
+                                <p>4 hours. Learn the ancient lore of the city. ₹1,500/group.</p>
+                            </div>
+                            <div class="result-card">
+                                <h6>Araku Valley Expedition</h6>
+                                <p>Full-day trip to the misty mountains. ₹7,000 total.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="utility-item">
+                        <h4>🚨 Defense Against Dark Arts (Safety)</h4>
+                        <p>Key spells (numbers) and **healing** locations.</p>
+                        <button class="cta-button utility-btn" data-target="safety-results">Read Warnings</button>
+                        <div id="safety-results" class="dynamic-results">
+                            <h5>Emergency Spells (Contacts):</h5>
+                            <p>Aurors (Police): **100** | Healers (Ambulance): **108**</p>
+                            <hr>
+                            <p style="color: var(--hogwarts-red); font-weight: bold;">⚠️ Constant Vigilance: Agree on auto-rickshaw fares beforehand!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>🧮 3. Arithmancy (Budget Calculator)</h2>
+                <form id="manual-budget-form">
+                    <div class="input-grid">
+                        <div class="form-group"><label>Flight/Broom Cost</label><input type="number" id="bc-travel" value="0" min="0"></div>
+                        <div class="form-group"><label>Inn Cost</label><input type="number" id="bc-hotel" value="0" min="0"></div>
+                        <div class="form-group"><label>Feasts Cost</label><input type="number" id="bc-food" value="0" min="0"></div>
+                        <div class="form-group"><label>Carriage Cost</label><input type="number" id="bc-local" value="0" min="0"></div>
+                        <div class="form-group"><label>Potions/Extras</label><input type="number" id="bc-extra" value="0" min="0"></div>
+                        <div class="form-group"><label>Total Divination</label><strong id="bc-total-display" style="font-size: 1.5em; color: var(--hogwarts-gold); font-family: 'Cinzel Decorative';">0</strong></div>
+                    </div>
+                </form>
+                
+                <div class="input-grid" style="border-top: 2px dashed var(--hogwarts-gold); padding-top: 20px; margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="convert-amount">💱 Exchange Goblin</label>
+                        <input type="number" id="convert-amount" placeholder="Amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="convert-from">From</label>
+                        <select id="convert-from">
+                            <option value="₹" selected>Rupees (₹)</option>
+                            <option value="$">Muggle USD ($)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="convert-to">To</label>
+                        <select id="convert-to">
+                            <option value="$" selected>Muggle USD ($)</option>
+                            <option value="₹">Rupees (₹)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Result</label>
+                        <strong id="conversion-result" style="font-size: 1.5em; color: var(--forest-green);">--</strong>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="convertCurrency()" style="background: var(--ink-black); border-color: #555;">Transfigure Currency</button>
+            </div>
+
+            <div class="section-card">
+                <h2>🎒 4. Trunk Checklist</h2>
+                <div class="packing-wrapper">
+                    <div id="packing-input-section">
+                        <h4 style="font-family: 'Cinzel Decorative'">Add Artifact / Document</h4>
+                        <div class="form-group">
+                            <input type="text" id="new-packing-item" placeholder="e.g., Wand, Invisibility Cloak" onkeypress="if(event.key === 'Enter') addItem()">
+                            <button type="button" class="cta-button" onclick="addItem()" style="margin-top: 10px; padding: 12px; font-size: 1em; background-color: var(--forest-green); border-color: var(--forest-green); color: #fff;">Accio Item</button>
+                            <button type="button" class="cta-button" onclick="clearList()" style="margin-top: 10px; padding: 12px; font-size: 1em; background-color: var(--hogwarts-red); color: #fff;">Evanesco List</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="font-family: 'Cinzel Decorative'">Trunk Contents (<span id="packed-count">0</span> / <span id="total-count">0</span> Packed)</h4>
+                        <ul id="packing-items-list" style="list-style: none; padding: 0;">
+                            <li onclick="togglePacked(this)">Ministry Identification (Passport) <button class="remove-btn" onclick="removeItem(this.parentNode, event)">X</button></li>
+                            <li onclick="togglePacked(this)">Broom/Train Tickets <button class="remove-btn" onclick="removeItem(this.parentNode, event)">X</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- JAVASCIPT LOGIC ---
+        // **IMPORTANT:** The core planning logic (generateTripPlan, generateSampleItinerary, budget calculation) 
+        // has been modified/removed from this front-end file and moved to the Python backend (app.py) 
+        // to transform this into a full-stack application.
+        // The front-end now uses Fetch API calls to request data from Flask.
+        
+        let currencySymbol = document.getElementById('currency-symbol').value;
+        const plannerContent = document.getElementById('planner-content');
+        const loginSection = document.getElementById('login-section');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+
+        // --- LOGIN/LOADING LOGIC ---
+        
+        window.onload = function() {
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                    loginSection.style.display = 'flex';
+                }, 500);
+            }, 1000); 
+        };
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple validation (can be replaced by a real one)
+            const magicId = document.getElementById('magic-id').value;
+            const magicPass = document.getElementById('magic-pass').value;
+            
+            if (magicId && magicPass) {
+                // Show a brief loading screen before entering the planner
+                loadingOverlay.style.display = 'flex';
+                loadingOverlay.style.opacity = '1';
+                document.getElementById('loading-overlay').querySelector('p').textContent = "Access Granted. Welcome, Wizard.";
+                
+                setTimeout(() => {
+                    loginSection.style.display = 'none';
+                    plannerContent.style.display = 'block';
+                    loadingOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                    }, 500);
+                }, 1500);
+            } else {
+                alert("Please enter your Magic ID and Incantation.");
+            }
+        });
+
+        // Function to recommend budget based on destination/days/age (client-side utility)
+        function recommendBudget(destination, days, age) {
+            let baseDailyCost = 4500; 
+
+            if (destination.toLowerCase().includes('visakhapatnam')) {
+                if (age < 30) {
+                    baseDailyCost = 3500; 
+                } else if (age >= 50) {
+                    baseDailyCost = 5500;
+                }
+            } else if (destination.toLowerCase().includes('paris')) {
+                baseDailyCost = 15000;
+            }
+            
+            const totalBudget = baseDailyCost * days;
+            document.getElementById('budget').placeholder = `Suggested: ${currencySymbol}${totalBudget.toLocaleString()}`;
+            return totalBudget;
+        }
+
+        document.getElementById('date-end').addEventListener('change', function() {
+            const startDateStr = document.getElementById('date-start').value;
+            const endDateStr = document.getElementById('date-end').value;
+            const destination = document.getElementById('location-to').value;
+            const age = parseInt(document.getElementById('user-age').value) || 30;
+
+            if (startDateStr && endDateStr) {
+                const diffDays = getDiffDays(startDateStr, endDateStr);
+                if (diffDays > 0) {
+                    recommendBudget(destination, diffDays, age);
+                }
+            }
+        });
+        
+        document.getElementById('currency-symbol').addEventListener('change', (e) => {
+            currencySymbol = e.target.value;
+            if (document.getElementById('results-container').style.display === 'block') {
+                // Re-render the existing plan with the new currency symbol
+                generateTripPlan(true); 
+            }
+            calculateManualBudget(); 
+            convertCurrency(); 
+        });
+        
+        // --- Core Planner Functions: Modified for Flask API Integration ---
+        document.getElementById('trip-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            generateTripPlan();
+        });
+
+        function getDiffDays(startDateStr, endDateStr) {
+            const start = new Date(startDateStr);
+            const end = new Date(endDateStr);
+            const diffTime = Math.abs(end - start);
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+        }
+
+        async function generateTripPlan(reRender = false) {
+            const userName = document.getElementById('user-name').value;
+            const destination = document.getElementById('location-to').value;
+            const budget = parseFloat(document.getElementById('budget').value);
+            const startDateStr = document.getElementById('date-start').value;
+            const endDateStr = document.getElementById('date-end').value;
+            const travelStyle = document.getElementById('travel-style').value;
+            const age = parseInt(document.getElementById('user-age').value);
+            
+            const diffDays = getDiffDays(startDateStr, endDateStr);
+
+            if (!reRender && (diffDays <= 0 || isNaN(budget) || budget < 100)) {
+                alert("The crystal ball is cloudy! Please enter valid dates and Galleons.");
+                return;
+            }
+            
+            currencySymbol = document.getElementById('currency-symbol').value;
+            
+            try {
+                // Call the Flask backend API
+                const response = await fetch('/api/generate_plan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_name: userName,
+                        destination: destination,
+                        budget: budget,
+                        days: diffDays,
+                        travel_style: travelStyle,
+                        age: age,
+                        currency: currencySymbol,
+                        start_date: startDateStr,
+                        end_date: endDateStr,
+                    }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // Render results using data from the backend
+                renderResults(data.trip_title, data.brief_idea, budget, data.estimated_cost, data.allocation, data.itinerary);
+
+            } catch (error) {
+                console.error("The Prophecy failed to be revealed:", error);
+                alert(`The magic failed! Error: ${error.message}`);
+            }
+        }
+
+        // The previous client-side function 'generateSampleItinerary' is now handled by the Python backend.
+
+        function renderResults(title, briefIdea, totalBudget, estTotalCost, allocation, itinerary) {
+            document.getElementById('ai-brief-idea').innerHTML = `**${title}**<br>${briefIdea}`;
+            document.getElementById('total-budget-display').textContent = `${currencySymbol}${totalBudget.toLocaleString()}`;
+            document.getElementById('est-total-cost-display').textContent = `${currencySymbol}${estTotalCost.toLocaleString()}`;
+
+            const budgetBody = document.getElementById('budget-table-body');
+            budgetBody.innerHTML = '';
+            // allocation is now an object from the backend
+            for (const category in allocation) {
+                if (allocation.hasOwnProperty(category)) {
+                    const cost = allocation[category];
+                    // Recalculate percentage based on the backend data
+                    const percentage = ((cost / totalBudget) * 100).toFixed(1); 
+                    const row = budgetBody.insertRow();
+                    row.insertCell().textContent = category;
+                    row.insertCell().textContent = `${currencySymbol}${cost.toLocaleString()}`;
+                    row.insertCell().textContent = `${percentage}%`;
+                }
+            }
+
+            const itineraryList = document.getElementById('itinerary-list');
+            itineraryList.innerHTML = '';
+            itinerary.forEach(dayPlan => {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'itinerary-item';
+
+                let activityHTML = '<ul style="list-style: none; padding-left: 0;">';
+                dayPlan.activities.forEach(activity => {
+                    activityHTML += `
+                        <li style="border-left: 2px solid #ddd; padding-left: 15px; margin-bottom: 5px;">
+                            <strong>${activity.time}:</strong> ${activity.desc}
+                            <span style="color: #666; font-size: 0.9em;">(Est: ${currencySymbol}${Math.round(activity.cost).toLocaleString()})</span>
+                        </li>
+                    `;
+                });
+                activityHTML += '</ul>';
+
+                dayCard.innerHTML = `
+                    <h4 style="font-family: 'Cinzel Decorative'; margin-top:0;">
+                        ${dayPlan.title}
+                        <span class="daily-budget">Est: ${currencySymbol}${dayPlan.estCost.toLocaleString()}</span>
+                    </h4>
+                    ${activityHTML}
+                `;
+                itineraryList.appendChild(dayCard);
+            });
+
+            document.getElementById('results-container').style.display = 'block';
+            document.getElementById('results-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Manual Budget & Currency ---
+        function calculateManualBudget() {
+            const fields = ['bc-travel', 'bc-hotel', 'bc-food', 'bc-local', 'bc-extra'];
+            let total = 0;
+            fields.forEach(id => {
+                const value = parseFloat(document.getElementById(id).value) || 0;
+                total += value;
+            });
+
+            document.getElementById('bc-total-display').textContent = `${currencySymbol}${total.toLocaleString()}`;
+        }
+        
+        document.getElementById('manual-budget-form').addEventListener('input', calculateManualBudget);
+
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('convert-amount').value) || 0;
+            const from = document.getElementById('convert-from').value;
+            const to = document.getElementById('convert-to').value;
+            let result = 0;
+            
+            // Dummy rates (using client-side logic for simplicity, though this could be API-backed)
+            const rates = {
+                '₹': { '$': 0.012, 'G': 0.002 }, // 1 Galleon approx 500 rupees in this logic
+                '$': { '₹': 83.0, 'G': 0.16 },
+                'G': { '₹': 500.0, '$': 6.0 }
+            };
+
+            if (from === to) {
+                result = amount;
+            } else if (rates[from] && rates[from][to]) {
+                result = amount * rates[from][to];
+            } else {
+                document.getElementById('conversion-result').textContent = "Confundus Charm Error";
+                return;
+            }
+
+            document.getElementById('conversion-result').textContent = `${to}${result.toFixed(2).toLocaleString()}`;
+        }
+        
+        // --- Packing List (Unchanged Logic, Themed HTML) ---
+        function updateCounts() {
+            const list = document.getElementById('packing-items-list');
+            const total = list.children.length;
+            const packed = Array.from(list.children).filter(li => li.classList.contains('packed')).length;
+            
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('packed-count').textContent = packed;
+        }
+
+        function addItem() {
+            const input = document.getElementById('new-packing-item');
+            const itemText = input.value.trim();
+            if (itemText === "") return;
+
+            const list = document.getElementById('packing-items-list');
+            const newItem = document.createElement('li');
+            
+            newItem.innerHTML = `${itemText} <button class="remove-btn" onclick="removeItem(this.parentNode, event)">X</button>`;
+            newItem.onclick = function() { togglePacked(this); };
+            list.appendChild(newItem);
+
+            input.value = '';
+            updateCounts();
+        }
+
+        function togglePacked(item) {
+            item.classList.toggle('packed');
+            updateCounts();
+        }
+
+        function removeItem(item, event) {
+            event.stopPropagation(); 
+            item.remove();
+            updateCounts();
+        }
+        
+        function clearList() {
+             if (confirm("Evanesco? (Clear list?)")) {
+                document.getElementById('packing-items-list').innerHTML = '';
+                updateCounts();
+             }
+        }
+        
+        // Utility Toggle
+        document.querySelectorAll('.utility-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                
+                targetElement.classList.toggle('active');
+
+                if (targetElement.classList.contains('active')) {
+                    this.textContent = 'Mischief Managed (Hide)';
+                } else {
+                    if (targetId === 'rental-results') this.textContent = 'Summon Transport';
+                    else if (targetId === 'hotel-results') this.textContent = 'Consult The Sorting Hat';
+                    else if (targetId === 'guide-results') this.textContent = 'Find a Guide';
+                    else if (targetId === 'safety-results') this.textContent = 'Read Warnings';
+                }
+            });
+        });
+
+        // Initialize
+        updateCounts();
+    </script>
+</body>
+</html>
